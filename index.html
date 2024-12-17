@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feliz 17 de Diciembre, mi Luna</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&display=swap" rel="stylesheet"> 
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css"> 
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #e3c9f5, #c0a0d6);
+      font-family: 'Playfair Display', serif; 
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      height: 100vh;
+      color: #4b0082;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    h1 {
+      font-size: 2rem; 
+      color: #8a2be2; 
+      margin-top: 20px;
+      font-weight: 600;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 15px;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      width: 70%;
+      max-width: 300px; 
+      padding: 20px; 
+      position: relative;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .moon {
+      font-size: 5rem; 
+      color: #ba55d3;
+      animation: moonGlow 2s ease-in-out infinite alternate;
+      margin-bottom: 15px;
+      text-shadow: 0 0 20px #fff, 0 0 30px #ba55d3, 0 0 60px #ba55d3;
+    }
+
+    .message {
+      font-size: 1rem; 
+      font-weight: 500;
+      color: #4b0082;
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.5s, transform 0.5s;
+      margin: 10px 0;
+    }
+
+    .message.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    button {
+      background-color: #8a2be2;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 1rem;
+      cursor: pointer;
+      margin-top: 15px;
+      border-radius: 25px;
+      transition: background-color 0.3s, transform 0.3s;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    button:hover {
+      background-color: #ba55d3;
+      transform: scale(1.05);
+    }
+
+    .stars {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      background: url('https://cdn.pixabay.com/photo/2017/07/27/22/51/milky-way-2542805_960_720.jpg') repeat;
+      animation: starAnimation 3s linear infinite;
+      opacity: 0.3;
+    }
+
+    @keyframes starAnimation {
+      0% { opacity: 0.3; }
+      50% { opacity: 0.6; }
+      100% { opacity: 0.3; }
+    }
+
+    @keyframes moonGlow {
+      0% { text-shadow: 0 0 20px #fff, 0 0 30px #ba55d3, 0 0 60px #ba55d3; }
+      100% { text-shadow: 0 0 30px #fff, 0 0 60px #ba55d3, 0 0 90px #ba55d3; }
+    }
+
+    footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background-color: #4b0082;
+      color: white;
+      padding: 10px 0;
+      text-align: center;
+      font-size: 0.8rem; 
+    }
+
+    @media (max-width: 600px) {
+      .moon {
+        font-size: 4rem; 
+      }
+      .message {
+        font-size: 0.9rem; 
+      }
+      button {
+        font-size: 0.9rem;
+        padding: 8px 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Te quiero Karen Mantilla</h1>
+
+  <div class="card">
+    <div class="stars"></div>
+    <div class="moon">🌙</div>
+    
+    <div class="message" id="message1"><span>¡Feliz 17 de Diciembre, mi Luna!</span> 🌙</div>
+    <div class="message" id="message2"><span>Eres mi todo, mi razón de ser.</span> ✨</div>
+    <div class="message" id="message3"><span>El día de hoy celebramos una fecha en la que nos conocimos.</span> 🥂</div>
+    <div class="message" id="message4"><span>Te quiero más que a las estrellas del cielo.</span> 💖</div>
+
+    <button id="nextBtn">¡Haz click para descubrir más!</button>
+  </div>
+
+  <footer>
+    <p>© 2024 ✞ - Todos los derechos reservados | Dedicado a KAREN MANTILLA</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script> 
+  <script>
+    let currentMessage = 0;
+    const messages = document.querySelectorAll('.message');
+    const nextBtn = document.getElementById('nextBtn');
+
+    function showMessages() {
+      if (currentMessage < messages.length) {
+        messages[currentMessage].classList.add('show');
+        currentMessage++;
+      }
+    }
+
+    window.onload = function() {
+      setInterval(showMessages, 1500);
+    };
+
+    nextBtn.addEventListener('click', () => {
+      nextBtn.disabled = true;
+      nextBtn.innerText = "¡Haz clic para descubrir más!";  
+
+      Swal.fire({
+        title: '¿Aceptas tener una cita conmigo?',
+        icon: 'question',
+        showCancelButton: true,
+        confirmButtonText: 'Sí',
+        cancelButtonText: 'No',
+        background: '#f4f4f9',
+        color: '#8a2be2',  
+        confirmButtonColor: '#8a2be2',
+        cancelButtonColor: '#d33',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire({
+            title: 'Te espero a las 7pm para nuestra cita, necesito que te pongas preciosa',
+            icon: 'success',
+            background: '#ffffff',  
+            color: '#4b4b4b', 
+            confirmButtonColor: '#8a2be2',  
+            showConfirmButton: true,
+            confirmButtonText: '¡Entendido!',
+          }).then(() => {
+            nextBtn.disabled = false; 
+            nextBtn.innerText = "¡Haz click para seguir jugando con la cita!"; 
+          });
+        } else {
+          Swal.fire({
+            title: 'Tienes que marcar el sí porque soy tu sol',
+            icon: 'warning',
+            background: '#f4f4f9',
+            color: '#8a2be2',
+            confirmButtonColor: '#8a2be2',
+          }).then(() => {
+            nextBtn.disabled = false; 
+            nextBtn.innerText = "¡Haz click para seguir jugando con la cita!"; 
+          });
+        }
+      });
+    });
+  </script>
+
+</body>
+</html>
